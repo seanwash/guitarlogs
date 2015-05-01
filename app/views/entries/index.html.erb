@@ -1,0 +1,10 @@
+<h1>Entries <small><%= link_to 'New Entry', new_entry_path %></small></h1>
+
+<ul>
+	<% @entries.each do |entry| %>
+		<li>
+			<%= link_to entry.created_at.strftime("%B %d %Y"), entry_path(entry) %> |
+			<%= entry.content %>
+		</li>
+	<% end %>
+</ul>

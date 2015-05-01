@@ -1,0 +1,17 @@
+# User
+- first_name
+- last_name
+- email
+- password
+
+# Journal
+- belongs_to user
+- has_many entries
+
+# Entry
+- belongs_to journal
+- belongs_to user through journal
+- date
+- content
+
+# Exercise (planned)

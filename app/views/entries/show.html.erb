@@ -1,0 +1,5 @@
+<h1>Entry for <%= @entry.created_at.strftime("%B %d %Y") %></h1>
+
+<%= @entry.content %>
+
+<%= link_to 'Back', entries_path, class: 'button' %>

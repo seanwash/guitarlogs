@@ -22,12 +22,27 @@ class EntriesController < ApplicationController
   end
 
   def edit
+    @entry = Entry.find params[:id]
   end
 
   def update
+    @entry = Entry.find params[:id]
+
+    if @entry.update_attributes entry_params
+      redirect_to entries_path, notice: 'Entry Updated!'
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @entry = Entry.find params[:id]
+
+    if @entry.destroy
+      redirect_to entries_path, notice: 'Entry Deleted!'
+    else
+      redirect_to entries_path
+    end
   end
 
   private

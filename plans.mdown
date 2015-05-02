@@ -1,3 +1,15 @@
+# Names
+licks
+Urban Gnome
+perfect
+picky
+Start Slow
+Jam Journal
+Clean Sweep
+Tracks
+Multitrack
+
+
 # User
 - first_name
 - last_name
@@ -13,5 +25,8 @@
 - belongs_to user through journal
 - date
 - content
+
+# Tags
+- name
 
 # Exercise (planned)

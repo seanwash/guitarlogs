@@ -15,7 +15,7 @@ class EntriesController < ApplicationController
     end
 
     if @entry.save
-      redirect_to entries_path, notice: 'Entry saved!'
+      redirect_to entries_path, flash: { success: 'Entry saved!' }
     else
       render :new
     end
@@ -37,7 +37,7 @@ class EntriesController < ApplicationController
     end
 
     if @entry.update_attributes entry_params
-      redirect_to entries_path, notice: 'Entry Updated!'
+      redirect_to entries_path, flash: { success: 'Entry Updated!' }
     else
       render :edit
     end
@@ -47,7 +47,7 @@ class EntriesController < ApplicationController
     @entry = Entry.find params[:id]
 
     if @entry.destroy
-      redirect_to entries_path, notice: 'Entry Deleted!'
+      redirect_to entries_path, flash: { success: 'Entry Deleted!' }
     else
       redirect_to entries_path
     end

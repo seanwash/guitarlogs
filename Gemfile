@@ -29,9 +29,13 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+gem 'nprogress-rails'
 gem 'bourbon'
 gem 'neat'
 gem 'bitters'
+
+gem 'autoprefixer-rails' # CSS autoprefixing stuff
+gem 'gon' # for getting railsy things into the page
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

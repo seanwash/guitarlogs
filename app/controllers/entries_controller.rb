@@ -10,6 +10,10 @@ class EntriesController < ApplicationController
   def create
     @entry = Entry.new entry_params
 
+    if params[:entry][:tag_ids]
+      params[:entry][:tag_ids] = sanitize_tags(params[:entry][:tag_ids])
+    end
+
     if @entry.save!
       redirect_to entries_path, notice: 'Entry saved!'
     else
@@ -27,6 +31,10 @@ class EntriesController < ApplicationController
 
   def update
     @entry = Entry.find params[:id]
+
+    if params[:entry][:tag_ids]
+      params[:entry][:tag_ids] = sanitize_tags(params[:entry][:tag_ids])
+    end
 
     if @entry.update_attributes entry_params
       redirect_to entries_path, notice: 'Entry Updated!'
@@ -49,7 +57,8 @@ class EntriesController < ApplicationController
 
   def entry_params
     params.require(:entry).permit(
-      :content
+      :content,
+      {tag_ids: []}
     )
   end
 end

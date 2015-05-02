@@ -3,3 +3,8 @@ User.create first_name: 'Sean', last_name: 'Washington', email: 'hello@seanwash.
 
 # Create first journal
 Journal.create user: User.first
+
+# Tags
+Tag.create name: 'dexterity'
+Tag.create name: 'speed'
+Tag.create name: 'strength'

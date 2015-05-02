@@ -2,9 +2,7 @@
 	<%= f.label :content, 'Content' %>
 	<%= f.text_area :content %>
 
-	<select name="" id="">
-		<option value="adf">asfsdsad</option>
-	</select>
+	<%= f.collection_select :tag_ids, Tag.all, :id, :name, { include_blank: 'Select Tags' }, { multiple: true } %>
 
 	<%= f.submit 'Save' %>
 	<%= link_to 'Cancel', entries_path, class: 'button' %>

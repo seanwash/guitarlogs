@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users
   resources :journals
   resources :entries
+  resources :tags
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

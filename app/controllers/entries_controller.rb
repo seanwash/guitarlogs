@@ -14,10 +14,10 @@ class EntriesController < ApplicationController
       params[:entry][:tag_ids] = sanitize_tags(params[:entry][:tag_ids])
     end
 
-    if @entry.save!
+    if @entry.save
       redirect_to entries_path, notice: 'Entry saved!'
     else
-      render :edit
+      render :new
     end
   end
 

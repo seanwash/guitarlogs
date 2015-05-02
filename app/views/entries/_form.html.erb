@@ -1,4 +1,14 @@
 <%= form_for @entry do |f| %>
+
+	<% if @entry.errors.any? %>
+		<ul class="flash-error">
+			<% @entry.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+		</ul>
+	<% end %>
+
+
 	<%= f.label :content, 'Content' %>
 	<%= f.text_area :content %>
 

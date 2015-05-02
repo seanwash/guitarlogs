@@ -1,9 +1,12 @@
 <header class="navigation" role="banner">
 	<div class="wrapper">
-		<a href="#" class="logo">Guitar Logs</a>
+
+		<%= link_to 'Guitar Logs', root_path, class: 'logo' %>
+
 		<nav role="navigation">
-			<ul id="js-navigation-menu" class="navig	ation-menu show">
-				<li class="nav-link"><a href="#">Journal</a></li>
+			<ul id="js-navigation-menu" class="navigation-menu show">
+				<li class="nav-link"><%= link_to 'Journal', root_path%></li>
+				<li class="nav-link"><a href="#">Exercises</a></li>
 			</ul>
 		</nav>
 

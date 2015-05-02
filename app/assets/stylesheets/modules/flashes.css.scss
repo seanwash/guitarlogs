@@ -39,3 +39,12 @@ $success-color: #e6efc2 !default;
 .flash-success {
 	@include flash($success-color);
 }
+
+#flash {
+	.flash-alert,
+	.flash-error,
+	.flash-notice,
+	.flash-success {
+		margin-bottom: 0;
+	}
+}

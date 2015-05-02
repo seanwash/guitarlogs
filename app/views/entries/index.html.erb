@@ -1,13 +1,33 @@
 <h1>Entries <small><%= link_to 'New Entry', new_entry_path %></small></h1>
 
-<ul>
-	<% @entries.each do |entry| %>
-		<li>
-			<%= link_to entry.created_at.strftime("%B %d %Y"), entry_path(entry) %> |
-			<%= entry.content %>
+<table class="table-minimal">
+	<thead>
+		<tr>
+			<th>Date</th>
+			<th>Content</th>
+			<th>Actions</th>
+		</tr>
+ 	</thead>
+ 	<tbody>
+		<% @entries.each do |entry| %>
+			<tr>
+				<td><%= link_to entry.created_at.strftime("%B %d %Y"), entry_path(entry) %></td>
+				<td>
+					<%= simple_format entry.content %>
 
-			<%= link_to 'Edit', edit_entry_path(entry) %>
-			<%= link_to 'Delete', entry_path(entry), method: :delete %>
-		</li>
-	<% end %>
-</ul>
+					<% if entry.tags.any? %>
+						<ul>
+							<% entry.tags.each do |tag| %>
+								<li class="badge-notice"><%= tag.name %></li>
+							<% end %>
+						</ul>
+					<% end %>
+				</td>
+				<td>
+					<%= link_to 'Edit', edit_entry_path(entry), class: 'button' %>
+					<%= link_to 'Delete', entry_path(entry), method: :delete, class: 'button' %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

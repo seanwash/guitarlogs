@@ -20,4 +20,8 @@
 @import 'base/base';
 @import 'neat';
 
-@import 'modules/flashes'
+@import 'global';
+
+@import 'modules/flashes';
+@import 'modules/header';
+@import 'modules/badges';

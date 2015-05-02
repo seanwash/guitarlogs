@@ -1,0 +1,9 @@
+body {
+	margin: 0;
+}
+
+.wrapper {
+	@include clearfix;
+	@include outer-container;
+	position: relative;
+}

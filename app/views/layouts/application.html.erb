@@ -9,8 +9,11 @@
 <body class="<%= controller_name %> <%= action_name %>">
 
 	<%= render 'shared/flashes' %>
+	<%= render 'shared/header' %>
 
-	<%= yield %>
+	<div class="wrapper">
+		<%= yield %>
+	</div>
 
 </body>
 </html>

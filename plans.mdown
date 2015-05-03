@@ -30,3 +30,8 @@ Multitrack
 - name
 
 # Exercise (planned)
+
+
+
+Home page - only show entries when logged in
+Auto create journal and assign to user if user doesn't have one (after create)

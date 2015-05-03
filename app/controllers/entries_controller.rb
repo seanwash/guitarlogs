@@ -1,4 +1,6 @@
 class EntriesController < ApplicationController
+  before_filter :authorize
+
   def index
     @entries = Entry.all.order('created_at DESC')
   end

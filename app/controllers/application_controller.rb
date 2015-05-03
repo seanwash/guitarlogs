@@ -18,6 +18,18 @@ class ApplicationController < ActionController::Base
       real_ids.push tag.id
     end
 
-    return real_ids
+    real_ids
+  end
+
+  private
+
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+  helper_method :current_user
+
+  def authorize
+    return unless current_user.nil?
+    redirect_to root_url, flash: { alert: 'You need to sign up to do that!' }
   end
 end

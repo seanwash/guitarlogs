@@ -13,7 +13,7 @@ Tag.create name: 'strength'
 
 # Exercises
 Exercise.create(
-  name: 'G Major Scale Squence',
+  name: 'G Major Scale Sequence',
   content: 'You just play the g major scale in a sequence.',
   user: User.first
 )

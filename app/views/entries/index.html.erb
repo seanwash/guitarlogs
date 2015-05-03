@@ -15,7 +15,17 @@
 				<td>
 					<%= simple_format entry.content %>
 
+					<% if entry.exercises.any? %>
+						<h3>Exercises</h3>
+						<ul>
+							<% entry.exercises.each do |exercise| %>
+								<li class="badge-notice"><%= link_to exercise.name, exercise_path(exercise) %></li>
+							<% end %>
+						</ul>
+					<% end %>
+
 					<% if entry.tags.any? %>
+						<h3>Tags</h3>
 						<ul>
 							<% entry.tags.each do |tag| %>
 								<li class="badge-notice"><%= tag.name %></li>

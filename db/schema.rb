@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150503161942) do
+ActiveRecord::Schema.define(version: 20150503170836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,16 @@ ActiveRecord::Schema.define(version: 20150503161942) do
   end
 
   add_index "entries", ["journal_id"], name: "index_entries_on_journal_id", using: :btree
+
+  create_table "entry_exercises", force: :cascade do |t|
+    t.integer  "entry_id"
+    t.integer  "exercise_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "entry_exercises", ["entry_id"], name: "index_entry_exercises_on_entry_id", using: :btree
+  add_index "entry_exercises", ["exercise_id"], name: "index_entry_exercises_on_exercise_id", using: :btree
 
   create_table "entry_tags", force: :cascade do |t|
     t.integer  "entry_id"
@@ -75,6 +85,8 @@ ActiveRecord::Schema.define(version: 20150503161942) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "entry_exercises", "entries"
+  add_foreign_key "entry_exercises", "exercises"
   add_foreign_key "exercise_tags", "exercises"
   add_foreign_key "exercise_tags", "tags"
   add_foreign_key "exercises", "users"

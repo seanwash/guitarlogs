@@ -63,6 +63,7 @@ class ExercisesController < ApplicationController
 
   def exercise_params
     params.require(:exercise).permit(
+      :name,
       :content,
       tag_ids: []
     )

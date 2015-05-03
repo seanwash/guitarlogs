@@ -12,7 +12,15 @@
 	<%= f.label :content, 'Content' %>
 	<%= f.text_area :content %>
 
-	<%= f.collection_select :tag_ids, Tag.all, :id, :name, { include_blank: 'Select Tags' }, { multiple: true } %>
+	<div class="field">
+		<%= f.label :exercise_ids, 'Exercises' %>
+		<%= f.collection_select :exercise_ids, Exercise.all, :id, :name, { include_blank: 'Select Exercises' }, { multiple: true } %>
+	</div>
+
+	<div class="field">
+		<%= f.label :tag_ids, 'Tags' %>
+		<%= f.collection_select :tag_ids, Tag.all, :id, :name, { include_blank: 'Select Tags' }, { multiple: true } %>
+	</div>
 
 	<%= f.submit 'Save' %>
 	<%= link_to 'Cancel', entries_path, class: 'button' %>

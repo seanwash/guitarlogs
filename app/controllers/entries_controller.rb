@@ -67,6 +67,7 @@ class EntriesController < ApplicationController
   def entry_params
     params.require(:entry).permit(
       :content,
+      exercise_ids: [],
       tag_ids: []
     )
   end

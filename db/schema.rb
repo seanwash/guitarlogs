@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150502193916) do
+ActiveRecord::Schema.define(version: 20150503160627) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "entries", force: :cascade do |t|
     t.text     "content"
@@ -20,11 +23,28 @@ ActiveRecord::Schema.define(version: 20150502193916) do
     t.integer  "journal_id"
   end
 
-  add_index "entries", ["journal_id"], name: "index_entries_on_journal_id"
+  add_index "entries", ["journal_id"], name: "index_entries_on_journal_id", using: :btree
 
   create_table "entry_tags", force: :cascade do |t|
     t.integer  "entry_id"
     t.integer  "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "exercise_tags", force: :cascade do |t|
+    t.integer  "exercise_id"
+    t.integer  "tag_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "exercise_tags", ["exercise_id"], name: "index_exercise_tags_on_exercise_id", using: :btree
+  add_index "exercise_tags", ["tag_id"], name: "index_exercise_tags_on_tag_id", using: :btree
+
+  create_table "exercises", force: :cascade do |t|
+    t.string   "name"
+    t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -35,7 +55,7 @@ ActiveRecord::Schema.define(version: 20150502193916) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "journals", ["user_id"], name: "index_journals_on_user_id"
+  add_index "journals", ["user_id"], name: "index_journals_on_user_id", using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string   "name"
@@ -52,4 +72,6 @@ ActiveRecord::Schema.define(version: 20150502193916) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "exercise_tags", "exercises"
+  add_foreign_key "exercise_tags", "tags"
 end

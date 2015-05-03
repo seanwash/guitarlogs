@@ -29,5 +29,8 @@ Multitrack
 # Tags
 - name
 
-# Exercise (planned)
+# Exercise
+- name
+- content
+- tag
 

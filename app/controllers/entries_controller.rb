@@ -10,11 +10,13 @@ class EntriesController < ApplicationController
   end
 
   def create
-    @entry = Entry.new entry_params
-
+    # Sanitize tags first
     if params[:entry][:tag_ids]
       params[:entry][:tag_ids] = sanitize_tags(params[:entry][:tag_ids])
     end
+
+    # Create new entry after tags have been sanitized
+    @entry = Entry.new entry_params
 
     # Assign this entry a journal
     @entry.journal = current_user.journal
@@ -35,11 +37,13 @@ class EntriesController < ApplicationController
   end
 
   def update
-    @entry = Entry.find params[:id]
-
+    # Sanitize tags first
     if params[:entry][:tag_ids]
       params[:entry][:tag_ids] = sanitize_tags(params[:entry][:tag_ids])
     end
+
+    # Create new entry after tags have been sanitized
+    @entry = Entry.find params[:id]
 
     if @entry.update_attributes entry_params
       redirect_to entries_path, flash: { success: 'Entry Updated!' }

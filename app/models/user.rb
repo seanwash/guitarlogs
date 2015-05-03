@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   has_one :journal
   has_many :entries, through: :journal
 
+  has_many :exercises
+
   # Always make sure that a user has a journal
   after_create :create_journal
 

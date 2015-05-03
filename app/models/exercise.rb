@@ -4,4 +4,6 @@ class Exercise < ActiveRecord::Base
 
   has_many :exercise_tags
   has_many :tags, through: :exercise_tags
+
+  belongs_to :user
 end

@@ -1,0 +1,33 @@
+<%= link_to 'New Exercise', new_exercise_path, class: 'button' %>
+
+<table class="table-minimal">
+	<thead>
+		<tr>
+			<th>Date</th>
+			<th>Content</th>
+			<th>Actions</th>
+		</tr>
+ 	</thead>
+ 	<tbody>
+		<% @exercises.each do |exercise| %>
+			<tr>
+				<td><%= link_to exercise.created_at.strftime("%B %d %Y"), exercise_path(exercise) %></td>
+				<td>
+					<%= simple_format exercise.content %>
+
+					<% if exercise.tags.any? %>
+						<ul>
+							<% exercise.tags.each do |tag| %>
+								<li class="badge-notice"><%= tag.name %></li>
+							<% end %>
+						</ul>
+					<% end %>
+				</td>
+				<td>
+					<%= link_to 'Edit', edit_exercise_path(exercise), class: 'button' %>
+					<%= link_to 'Delete', exercise_path(exercise), method: :delete, class: 'button' %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

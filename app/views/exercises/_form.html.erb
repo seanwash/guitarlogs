@@ -1,0 +1,19 @@
+<%= form_for @exercise do |f| %>
+
+	<% if @exercise.errors.any? %>
+		<ul class="flash-error">
+			<% @exercise.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+		</ul>
+	<% end %>
+
+
+	<%= f.label :content, 'Content' %>
+	<%= f.text_area :content %>
+
+	<%= f.collection_select :tag_ids, Tag.all, :id, :name, { include_blank: 'Select Tags' }, { multiple: true } %>
+
+	<%= f.submit 'Save' %>
+	<%= link_to 'Cancel', exercises_path, class: 'button' %>
+<% end %>

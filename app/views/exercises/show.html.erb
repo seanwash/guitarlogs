@@ -1,0 +1,13 @@
+<h1>Entry for <%= @exercise.name %></h1>
+
+<%= simple_format @exercise.content %>
+
+<% if @exercise.tags.any? %>
+	<ul>
+		<% @exercise.tags.each do |tag| %>
+			<li class="badge-notice"><%= tag.name %></li>
+		<% end %>
+	</ul>
+<% end %>
+
+<%= link_to 'Back', exercises_path, class: 'button' %>

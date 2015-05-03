@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :journals
   resources :entries
+  resources :exercises
   resources :tags
 
   # Example of regular route:

@@ -2,7 +2,7 @@ class EntriesController < ApplicationController
   before_filter :authorize
 
   def index
-    @entries = Entry.all.order('created_at DESC')
+    @entries = current_user.entries.order('created_at DESC')
   end
 
   def new

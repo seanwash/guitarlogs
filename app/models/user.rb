@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
   validates :password, presence: true, on: :update
 
   has_one :journal
+  has_many :entries, through: :journal
 end

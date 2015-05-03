@@ -16,6 +16,9 @@ class EntriesController < ApplicationController
       params[:entry][:tag_ids] = sanitize_tags(params[:entry][:tag_ids])
     end
 
+    # Assign this entry a journal
+    @entry.journal = current_user.journal
+
     if @entry.save
       redirect_to entries_path, flash: { success: 'Entry saved!' }
     else

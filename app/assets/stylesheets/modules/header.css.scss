@@ -268,16 +268,6 @@ header.navigation {
 		}
 	}
 
-	.sign-up {
-		@include button(flat, $action-color);
-		display: inline;
-		float: right;
-		font-size: 0.8em;
-		margin-top: 1em;
-		padding: 0.75em 1em;
-		text-transform: uppercase;
-	}
-
 	// Search bar
 
 	.search-bar {
@@ -337,5 +327,16 @@ header.navigation {
 				display: block;
 			}
 		}
+	}
+
+	.button {
+		@include button(flat, $action-color);
+		float: right;
+		font-size: 0.8em;
+		margin-top: 1em;
+		padding: 0.75em 1em;
+		text-transform: uppercase;
+
+		& + .button { margin-right: $navigation-padding ; }
 	}
 }

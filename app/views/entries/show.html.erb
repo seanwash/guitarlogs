@@ -1,5 +1,13 @@
 <h1>Entry for <%= @entry.created_at.strftime("%B %d %Y") %></h1>
 
-<%= @entry.content %>
+<%= simple_format @entry.content %>
+
+<% if @entry.tags.any? %>
+	<ul>
+		<% @entry.tags.each do |tag| %>
+			<li class="badge-notice"><%= tag.name %></li>
+		<% end %>
+	</ul>
+<% end %>
 
 <%= link_to 'Back', entries_path, class: 'button' %>

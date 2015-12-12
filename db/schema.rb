@@ -85,9 +85,11 @@ ActiveRecord::Schema.define(version: 20150503170836) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "entries", "journals"
   add_foreign_key "entry_exercises", "entries"
   add_foreign_key "entry_exercises", "exercises"
   add_foreign_key "exercise_tags", "exercises"
   add_foreign_key "exercise_tags", "tags"
   add_foreign_key "exercises", "users"
+  add_foreign_key "journals", "users"
 end
